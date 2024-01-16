@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dufytpqddb6rc"]
+
+[ext_resource type="Script" path="res://Stages/Stage.gd" id="1_ae2nu"]
+[ext_resource type="PackedScene" uid="uid://cydguw3g0208c" path="res://Beard/Player.tscn" id="2_2bujt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uanry"]
+size = Vector2(1064.42, 861)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0vaw"]
+size = Vector2(3868, 220)
+
+[node name="FlatLand" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_ae2nu")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+collision_layer = 3
+
+[node name="LeftWallBody" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-488.073, 440.227)
+shape = SubResource("RectangleShape2D_uanry")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+collision_layer = 7
+
+[node name="RightWallShape" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(2397.1, 435.364)
+shape = SubResource("RectangleShape2D_uanry")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 7
+
+[node name="FloorShape" type="CollisionShape2D" parent="Floor"]
+position = Vector2(951.342, 972)
+shape = SubResource("RectangleShape2D_g0vaw")
+debug_color = Color(0.811765, 0.407843, 0.0784314, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(962, 544)
+drag_left_margin = 0.0
+drag_right_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Player1" parent="." instance=ExtResource("2_2bujt")]
+position = Vector2(381.219, 748.745)
+collision_layer = 0
+
+[node name="Player2" parent="." instance=ExtResource("2_2bujt")]
+position = Vector2(1466.11, 755.102)
+collision_layer = 0
+player_id = 2
+
+[node name="CurrentFPS" type="Label" parent="."]
+offset_left = 5.04535
+offset_top = 6.72717
+offset_right = 257.045
+offset_bottom = 51.7272
